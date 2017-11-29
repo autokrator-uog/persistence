@@ -1,23 +1,19 @@
 version: '2.2'
 
 networks:
-  hostnet:
-    external:
-      name: thenet
   kafka-public:
     external:
-      name: kafka-public
+      name: docker_kafka-public
   persistence:
     driver: bridge
 
 services:
   connect:
-    build: ../persistence/connect-custom/
+    build: .
     restart: always
     ports:
       - "8083:8083"
     networks:
-      - hostnet
       - kafka-public
       - persistence
     command: connect-standalone worker.properties couchbase-sink.properties
@@ -25,7 +21,6 @@ services:
   couchbase.db:
     image: couchbase
     networks:
-      - hostnet
       - persistence
     ports:
       - 8091-8094:8091-8094
