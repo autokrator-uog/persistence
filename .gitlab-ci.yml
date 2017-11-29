@@ -1,7 +1,7 @@
 
 variables:
   REGISTRY: sed-team-project:4567
-  REG_KAFKA_CONNECT: sed-team-project:4567/sed-dev-group/presistence/kafka-connect
+  REG_KAFKA_CONNECT: sed-team-project:4567/sed-dev-group/presistence
   KAFKA_CONNECT_TAG_THIS_BUILD: $REG_KAFKA_CONNECT:$CI_COMMIT_REF_NAME
 
 stages:
